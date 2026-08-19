@@ -1,5 +1,15 @@
 #!/bin/bash
 # zowe_operations.sh
+# Create zowe profile
+echo "Creating zowe Profile"
+zowe profile create zosmf myprofile \
+  --host "$ZOWE_HOST" \
+  --port "$ZOWE_PORT" \
+  --user "$ZOWE_USERNAME" \
+  --password "$ZOWE_PASSWORD" \
+  --reject-unauthorized false
+echo "Profile created."
+
 # Convert username to lowercase
 LOWERCASE_USERNAME=$(echo "$ZOWE_USERNAME" | tr '[:upper:]' '[:lower:]')
 
