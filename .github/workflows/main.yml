@@ -13,6 +13,7 @@ jobs:
     - name: Set up Java
       uses: actions/setup-java@v5
       with:
+        distribution: 'microsoft'
         java-version: '11'
     - name: Run COBOL Check
       env:
