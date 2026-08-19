@@ -27,7 +27,7 @@ echo "made linux_gnucobol:run_tests executable"
 cd ..
 
 # Function to run cobolcheck and copy files
-run_cobol-check() {
+run_cobolcheck() {
   program=$1
   echo "running cobolcheck for $program"
 
@@ -35,7 +35,7 @@ run_cobol-check() {
   ./cobolcheck -p $program
   echo "Cobolcheck execution completed for $program (exceptions may have occured)"
 
-  # Checj if CC##99.CBL was created, regardless of cobolcheck exit status
+  # Check if CC##99.CBL was created, regardless of cobolcheck exit status
   if [ -f "CC##99.CBL" ]; then
     # copy to the mvs dataset
     if cp CC##99.CBL "//'${ZOWE_USERNAME}.CBL($program)'"; then
@@ -60,7 +60,7 @@ run_cobol-check() {
 }
 
 # Run for each program
-for program in NUMBERS EMPPAY DEPTPAY, do
+for program in NUMBERS EMPPAY DEPTPAY; do
   run_cobolcheck $program
 done
 
