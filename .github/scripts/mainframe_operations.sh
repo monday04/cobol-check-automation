@@ -15,13 +15,11 @@ ZOWE_USERNAME="$ZOWE_USERNAME"
 cd cobol-check
 echo "Changed to $(pwd)"
 ls -al
-ls -al bin
-ls -al scripts
-find . -type f | sort
 
 # Make cobolcheck executable
-chmod +x cobolcheck
-echo "made cobolcheck executable"
+##chmod +x cobolcheck
+##echo "made cobolcheck executable"
+ls -la bin
 
 # Make script in scripts directory executable
 cd scripts
@@ -35,7 +33,9 @@ run_cobolcheck() {
   echo "running cobolcheck for $program"
 
   # Run cobolcheck, but don't exit if it fails
-  ./cobolcheck -p $program
+  ##./cobolcheck -p $program
+  java -jar bin/cobol-check-0.2.19.jar --help
+  java -jar bin/cobol-check-0.2.19.jar -p $program
   echo "Cobolcheck execution completed for $program (exceptions may have occured)"
 
   # Check if CC##99.CBL was created, regardless of cobolcheck exit status
