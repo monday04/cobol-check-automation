@@ -1,7 +1,5 @@
 #!/bin/bash
 # zowe_operations.sh
-# exit immediately if a command exits with a non-zero status
-set -eo pipefail
 
 # Create  and verify zowe profile connection
 echo "Creating zowe Profile"
