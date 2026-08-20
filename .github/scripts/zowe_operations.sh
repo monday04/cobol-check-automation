@@ -2,7 +2,7 @@
 # zowe_operations.sh
 # Create zowe profile
 echo "Creating zowe Profile"
-zowe profile create zosmf myprofile \
+zowe profiles create zosmf myprofile \
   --host "$ZOWE_HOST" \
   --port "$ZOWE_PORT" \
   --user "$ZOWE_USERNAME" \
