@@ -23,10 +23,10 @@ else
 fi
 
 # Upload files
-zowe zos-files upload dir-to-uss "./cobol-check" "/z/$LOWERCASE_USERNAME/cobolcheck" --recursive --binary-files "*.jar"
+zowe zos-files upload dir-to-uss "./cobol-check" "/z/$LOWERCASE_USERNAME/cobolcheck" --recursive --binary-files "cobol-check-0.2.9.jar"
 
 # Verify upload
 echo "Verifying upload:"
-zowe zos-files list uss-files "/z/$LOWERCASE_USERNAME/cobolcheck" --rfj false || true
+zowe zos-files list uss-files "/z/$LOWERCASE_USERNAME/cobolcheck" --response-format-json false || true
 
 echo "Done!"
