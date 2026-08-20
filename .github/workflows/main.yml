@@ -28,6 +28,7 @@ jobs:
         ZOWE_CONFIG_JSON: ${{ secrets.ZOWE_CONFIG_JSON }}
         ZOWE_USERNAME: ${{ secrets.ZOWE_USERNAME }}
         ZOWE_PASSWORD: ${{ secrets.ZOWE_PASSWORD }}
+        ZOWE_OPT_SECURE_PASSWORDS: "false"    # bypasses linux keyring check
       run: |
         chmod +x .github/scripts/zowe_operations.sh
         .github/scripts/zowe_operations.sh
