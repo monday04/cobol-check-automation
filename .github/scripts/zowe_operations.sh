@@ -2,7 +2,11 @@
 # zowe_operations.sh
 # Create zowe profile
 echo "Creating zowe Profile"
-zowe config auto-init
+set -x
+zowe config list
+echo "$ZOWE_CONFIG_JSON" > zowe.config.json
+zowe config set profiles.project_base.user "$ZOWE_USERNAME"
+zowe config set profiles.project_base.password "$ZOWE_PASSWORD"
 
 # Convert username to lowercase
 LOWERCASE_USERNAME=$(echo "$ZOWE_USERNAME" | tr '[:upper:]' '[:lower:]')
