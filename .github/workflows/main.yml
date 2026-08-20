@@ -23,6 +23,14 @@ jobs:
       run: npm install -g @zowe/cli
     - name: Verify ZOWE
       run: zowe --version
+    - name: Install GnuCOBOL
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gnucobol4
+    - name: Verify GnuCOBOL
+      run: |
+        which cobc
+        cobc -V
     - name: Setup Mainframe Environment and Upload COBOL Check
       env:        
         ZOWE_CONFIG_JSON: ${{ secrets.ZOWE_CONFIG_JSON }}
