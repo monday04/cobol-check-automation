@@ -1,14 +1,16 @@
 #!/bin/bash
 # zowe_operations.sh
+# exit immediately if a command exits with a non-zero status
+set -eo pipefail
+
 # Create zowe profile
 echo "Creating zowe Profile"
-set -x
 printf '%s' "$ZOWE_CONFIG_JSON" > zowe.config.json
-zowe config set profiles.base.user "$ZOWE_USERNAME"
-zowe config set profiles.base.password "$ZOWE_PASSWORD"
+zowe config set profiles.base.properties.user "$ZOWE_USERNAME"
+zowe config set profiles.base.properties.password "$ZOWE_PASSWORD"
 zowe config list
 zowe config get profiles.base
-zowe congif get profiles.zosmf
+zowe config get profiles.zosmf
 zowe zosmf check status
 
 # Convert username to lowercase
