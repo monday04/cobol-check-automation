@@ -7,7 +7,7 @@ zowe config list
 printf '%s' "$ZOWE_CONFIG_JSON" > zowe.config.json
 zowe config set profiles.project_base.user "$ZOWE_USERNAME"
 zowe config set profiles.project_base.password "$ZOWE_PASSWORD"
-zowe config check status
+zowe zosmf check status
 
 # Convert username to lowercase
 LOWERCASE_USERNAME=$(echo "$ZOWE_USERNAME" | tr '[:upper:]' '[:lower:]')
