@@ -3,14 +3,12 @@
 # exit immediately if a command exits with a non-zero status
 set -eo pipefail
 
-# Create zowe profile
+# Create  and verify zowe profile connection
 echo "Creating zowe Profile"
 printf '%s' "$ZOWE_CONFIG_JSON" > zowe.config.json
 zowe config set profiles.base.properties.user "$ZOWE_USERNAME"
 zowe config set profiles.base.properties.password "$ZOWE_PASSWORD"
 zowe config list
-zowe config get profiles.base
-zowe config get profiles.zosmf
 zowe zosmf check status
 
 # Convert username to lowercase
