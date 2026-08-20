@@ -2,7 +2,7 @@
 # zowe_operations.sh
 # Create zowe profile
 echo "Creating zowe Profile"
-zowe config --help
+zowe config auto-init
 
 # Convert username to lowercase
 LOWERCASE_USERNAME=$(echo "$ZOWE_USERNAME" | tr '[:upper:]' '[:lower:]')
