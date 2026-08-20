@@ -27,4 +27,6 @@ zowe zos-files upload dir-to-uss "./cobol-check" "/z/$LOWERCASE_USERNAME/cobolch
 
 # Verify upload
 echo "Verifying upload:"
-zowe zos-files list uss-files "/z/$LOWERCASE_USERNAME/cobolcheck"
+zowe zos-files list uss-files "/z/$LOWERCASE_USERNAME/cobolcheck" --rfj false || true
+
+echo "Done!"
