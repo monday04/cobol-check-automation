@@ -15,6 +15,9 @@ ZOWE_USERNAME="$ZOWE_USERNAME"
 cd cobol-check
 echo "Changed to $(pwd)"
 ls -al
+ls -al bin
+ls -al scripts
+find . -type f | sort
 
 # Make cobolcheck executable
 chmod +x cobolcheck
