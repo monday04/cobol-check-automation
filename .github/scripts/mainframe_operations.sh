@@ -36,14 +36,14 @@ run_cobolcheck() {
 
   # Run cobolcheck, but don't exit if it fails
   ##./cobolcheck -p $program
-  java -jar bin/cobol-check-0.2.19.jar --help
   java -jar bin/cobol-check-0.2.19.jar -p $program
   echo "Cobolcheck execution completed for $program (exceptions may have occured)"
 
   # Check if CC##99.CBL was created, regardless of cobolcheck exit status
-  if [ -f "CC##99.CBL" ]; then
+  if [ -f "testruns/CC##99.CBL" ]; then
     # copy to the mvs dataset
-    if cp CC##99.CBL "//'${ZOWE_USERNAME}.CBL($program)'"; then
+  #  if cp CC##99.CBL "//'${ZOWE_USERNAME}.CBL($program)'"; then
+     if zowe zos-files cp ds "testruns/CC##99.CBL" "//'${ZOWE_USERNAME}.CBL($program)'"; then
       echo "copied CC##99.CBL to ${ZOWE_USERNAME}.CBL($program)"
     else
       echo "failed to copy CC##99.CBL to ${ZOWE_USERNAME}.CBL($program)"
@@ -55,11 +55,8 @@ run_cobolcheck() {
   # Copy the JCL file if it exists
   # if [ -f "${program}.JCL" ]; then
   #   if cp ${program}.JCL "//'${ZOWE_USERNAME}.JCL($program)'"; then
-  zowe files upload file-to-data-set "$REPO_ROOT/${program}.JCL" "//'${ZOWE_USERNAME}.JCL($program)'"
-  zowe files --help
-  zowe zos-files --help
   if [ -f "$REPO_ROOT/${program}.JCL" ]; then
-    if cp $REPO_ROOT/${program}.JCL "//'${ZOWE_USERNAME}.JCL($program)'"; then
+    if zowe zos-files cp ds $REPO_ROOT/${program}.JCL "//'${ZOWE_USERNAME}.JCL($program)'"; then
       echo "Copied ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)"
     else
       echo "failed to copy ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)"
