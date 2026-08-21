@@ -43,7 +43,7 @@ run_cobolcheck() {
   if [ -f "testruns/CC##99.CBL" ]; then
     # copy to the mvs dataset
   #  if cp CC##99.CBL "//'${ZOWE_USERNAME}.CBL($program)'"; then
-     if zowe zos-files cp ds "testruns/CC##99.CBL" "//'${ZOWE_USERNAME}.CBL($program)'"; then
+     if zowe zos-files up ftds "testruns/CC##99.CBL" "//'${ZOWE_USERNAME}.CBL($program)'"; then
       echo "copied CC##99.CBL to ${ZOWE_USERNAME}.CBL($program)"
     else
       echo "failed to copy CC##99.CBL to ${ZOWE_USERNAME}.CBL($program)"
@@ -56,7 +56,7 @@ run_cobolcheck() {
   # if [ -f "${program}.JCL" ]; then
   #   if cp ${program}.JCL "//'${ZOWE_USERNAME}.JCL($program)'"; then
   if [ -f "$REPO_ROOT/${program}.JCL" ]; then
-    if zowe zos-files cp ds $REPO_ROOT/${program}.JCL "//'${ZOWE_USERNAME}.JCL($program)'"; then
+    if zowe zos-files up ftds $REPO_ROOT/${program}.JCL "//'${ZOWE_USERNAME}.JCL($program)'"; then
       echo "Copied ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)"
     else
       echo "failed to copy ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)"
