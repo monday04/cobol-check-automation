@@ -12,6 +12,8 @@ java -version
 ZOWE_USERNAME="$ZOWE_USERNAME"
 
 # Change to the cobolcheck directory
+# save directory before changing
+REPO_ROOT=$(pwd)    
 cd cobol-check
 echo "Changed to $(pwd)"
 ls -al
@@ -51,8 +53,10 @@ run_cobolcheck() {
   fi
 
   # Copy the JCL file if it exists
-  if [ -f "${program}.JCL" ]; then
-    if cp ${program}.JCL "//'${ZOWE_USERNAME}.JCL($program)'"; then
+  # if [ -f "${program}.JCL" ]; then
+  if [ -f "$REPO_ROOT/${program}.JCL" ]; then
+  #  if cp ${program}.JCL "//'${ZOWE_USERNAME}.JCL($program)'"; then
+    if cp $REPO_ROOT/${program}.JCL "//'${ZOWE_USERNAME}.JCL($program)'"; then
       echo "Copied ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)"
     else
       echo "failed to copy ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)"
