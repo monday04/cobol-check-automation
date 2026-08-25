@@ -14,7 +14,7 @@ ZOWE_USERNAME="$ZOWE_USERNAME"
 # save directory before changing
 REPO_ROOT=$(pwd)    
 # Change to the cobolcheck directory
-cd cobol-check
+# cd cobol-check
 echo "Changed to $(pwd)"
 ls -al
 
