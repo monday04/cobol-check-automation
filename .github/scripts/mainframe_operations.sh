@@ -39,6 +39,7 @@ run_cobolcheck() {
   ##./cobolcheck -p $program
   java -jar bin/cobol-check-0.2.19.jar -p $program
   echo "Cobolcheck execution completed for $program (exceptions may have occured)"
+  echo "repo_root value is: $REPO_ROOT"
 
   # Check if CC##99.CBL was created, regardless of cobolcheck exit status
   if [ -f "testruns/CC##99.CBL" ]; then
