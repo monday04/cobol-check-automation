@@ -24,10 +24,10 @@ ls -al
 ls -la bin
 
 # Make script in scripts directory executable
-cd scripts
+# cd scripts
 chmod +x linux_gnucobol_run_tests
 echo "made linux_gnucobol:run_tests executable"
-cd ..
+# cd ..
 
 # Function to run cobolcheck and copy files
 run_cobolcheck() {
