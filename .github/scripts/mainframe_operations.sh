@@ -55,10 +55,10 @@ run_cobolcheck() {
   fi
 
   # Copy the JCL file if it exists
-  # if [ -f "${program}.JCL" ]; then
-  #   if cp ${program}.JCL "//'${ZOWE_USERNAME}.JCL($program)'"; then
-  if [ -f "$REPO_ROOT/${program}.JCL" ]; then
-    if zowe zos-files ul ftds $REPO_ROOT/${program}.JCL "${ZOWE_USERNAME}.JCL($program)"; then
+  if [ -f "${program}.JCL" ]; then
+    if cp ${program}.JCL "//'${ZOWE_USERNAME}.JCL($program)'"; then
+  # if [ -f "$REPO_ROOT/${program}.JCL" ]; then
+  #   if zowe zos-files ul ftds $REPO_ROOT/${program}.JCL "${ZOWE_USERNAME}.JCL($program)"; then
       echo "Copied ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)"
     else
       echo "failed to copy ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)"
