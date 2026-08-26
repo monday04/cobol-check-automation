@@ -19,8 +19,8 @@ echo "Changed to $(pwd)"
 ls -al
 
 # Make cobolcheck executable
-chmod +x cobolcheck
-echo "made cobolcheck executable"
+## chmod +x cobolcheck
+## echo "made cobolcheck executable"
 ls -la bin
 
 # Make script in scripts directory executable
@@ -33,11 +33,13 @@ cd ..
 run_cobolcheck() {
   program=$1
   echo "running cobolcheck for $program"
+  echo "repo_root value is: $REPO_ROOT"
 
   # Run cobolcheck, but don't exit if it fails
   ##./cobolcheck -p $program
   java -jar bin/cobol-check-0.2.19.jar -p $program
   echo "Cobolcheck execution completed for $program (exceptions may have occured)"
+  echo "repo_root value is: $REPO_ROOT"
 
   # Check if CC##99.CBL was created, regardless of cobolcheck exit status
   if [ -f "testruns/CC##99.CBL" ]; then
