@@ -18,6 +18,9 @@ cd cobol-check
 echo "Changed to $(pwd)"
 ls -al
 
+echo "===== CONFIG ====="
+cat config.properties
+
 # Make cobolcheck executable
 ## chmod +x cobolcheck
 ## echo "made cobolcheck executable"
