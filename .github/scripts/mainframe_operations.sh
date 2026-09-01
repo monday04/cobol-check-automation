@@ -69,6 +69,8 @@ run_cobolcheck() {
     fi
   else
     echo "${program}.JCL not found"
+    cd ..
+    run_cobolcheck $program
   fi
 }
 
